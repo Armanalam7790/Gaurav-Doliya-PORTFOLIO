@@ -1,0 +1,190 @@
+---
+const links = [
+  { name: "HOME", href: "#home" },
+  { name: "EXPERIENCE", href: "#experience" },
+  { name: "BLOGS", href: "#blogs" },
+  { name: "PROJECTS", href: "#projects" },
+  { name: "CONTACT", href: "#contact" },
+];
+---
+
+<header class="sticky top-0 z-50 w-full border-b border-zinc-200 bg-[#F5F5F5]/90 backdrop-blur-md transition-colors duration-200 dark:border-zinc-800 dark:bg-black/90">
+  <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 sm:px-8">
+    
+    <!-- Left: Logo / Brand -->
+    <div class="flex flex-1 items-center justify-start">
+      <a href="/" class="group flex items-center text-xl font-extrabold tracking-tight text-zinc-900 transition-colors dark:text-white">
+        <span>Gaurav Doliya</span><span class="text-[#7C3AED] transition-transform group-hover:scale-125 inline-block">.</span>
+      </a>
+    </div>
+
+    <!-- Center: Navigation Links (HOME, EXPERIENCE, BLOGS, PROJECTS, CONTACT) -->
+    <nav class="hidden md:flex flex-none items-center justify-center gap-8" aria-label="Main navigation">
+      {links.map((link) => (
+        <a
+          href={link.href}
+          class="text-xs font-semibold tracking-wider text-zinc-600 transition-colors hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white"
+        >
+          {link.name}
+        </a>
+      ))}
+    </nav>
+
+    <!-- Right: Actions (RESUME + Theme Toggle) -->
+    <div class="hidden md:flex flex-1 items-center justify-end gap-3">
+      <!-- RESUME Button (Boxed outlined button as drawn) -->
+      <a
+        href="/resume.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="rounded-md border border-zinc-300 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-zinc-900 transition-all hover:border-zinc-900 hover:bg-zinc-100 active:scale-95 dark:border-zinc-700 dark:text-zinc-100 dark:hover:border-zinc-300 dark:hover:bg-zinc-900"
+      >
+        RESUME
+      </a>
+
+      <!-- Dark/Light Theme Toggle (Sun icon as drawn) -->
+      <button
+        id="theme-toggle"
+        type="button"
+        aria-label="Toggle color theme"
+        class="flex h-9 w-9 items-center justify-center rounded-md border border-transparent text-zinc-600 transition-all hover:bg-zinc-100 hover:text-zinc-950 active:scale-90 dark:text-zinc-400 dark:hover:bg-zinc-900 dark:hover:text-white"
+      >
+        <!-- Sun Icon (Active when dark theme is on) -->
+        <svg id="sun-icon" class="hidden h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+        </svg>
+        <!-- Moon Icon (Active when light theme is on) -->
+        <svg id="moon-icon" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation Toggle -->
+    <div class="flex items-center gap-2 md:hidden">
+      <button
+        id="theme-toggle-mobile"
+        type="button"
+        aria-label="Toggle color theme"
+        class="flex h-9 w-9 items-center justify-center rounded-md text-zinc-600 transition-colors hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-900"
+      >
+        <svg id="sun-icon-mobile" class="hidden h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+        </svg>
+        <svg id="moon-icon-mobile" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+        </svg>
+      </button>
+
+      <button
+        id="mobile-menu-btn"
+        type="button"
+        aria-label="Toggle navigation menu"
+        class="flex h-9 w-9 items-center justify-center rounded-md text-zinc-700 transition-colors hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-900"
+      >
+        <svg id="menu-open-icon" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg id="menu-close-icon" class="hidden h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Dropdown Menu -->
+  <div id="mobile-menu" class="hidden border-b border-zinc-200 bg-[#F5F5F5]/95 px-6 py-5 backdrop-blur-md dark:border-zinc-800 dark:bg-black/95 md:hidden">
+    <nav class="flex flex-col gap-4">
+      {links.map((link) => (
+        <a
+          href={link.href}
+          class="text-xs font-semibold tracking-wider text-zinc-700 transition-colors hover:text-zinc-950 dark:text-zinc-300 dark:hover:text-white"
+        >
+          {link.name}
+        </a>
+      ))}
+      <a
+        href="/resume.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mt-2 inline-flex w-fit items-center justify-center rounded-md border border-zinc-300 px-4 py-2 text-xs font-bold uppercase tracking-wider text-zinc-900 transition-all hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-100 dark:hover:bg-zinc-900"
+      >
+        RESUME
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script is:inline>
+  function setupTheme() {
+    const isDark = (() => {
+      if (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('theme')) {
+        return sessionStorage.getItem('theme') === 'dark';
+      }
+      if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+        return localStorage.getItem('theme') === 'dark';
+      }
+      return true; // Default to dark theme
+    })();
+
+    document.documentElement.classList.toggle('dark', isDark);
+
+    const updateIcons = () => {
+      const currentDark = document.documentElement.classList.contains('dark');
+      const sunIcons = document.querySelectorAll('#sun-icon, #sun-icon-mobile');
+      const moonIcons = document.querySelectorAll('#moon-icon, #moon-icon-mobile');
+
+      sunIcons.forEach((el) => el.classList.toggle('hidden', !currentDark));
+      moonIcons.forEach((el) => el.classList.toggle('hidden', currentDark));
+    };
+
+    updateIcons();
+
+    const toggleTheme = () => {
+      const nextDark = document.documentElement.classList.toggle('dark');
+      if (typeof sessionStorage !== 'undefined') {
+        sessionStorage.setItem('theme', nextDark ? 'dark' : 'light');
+      }
+      if (typeof localStorage !== 'undefined') {
+        localStorage.setItem('theme', nextDark ? 'dark' : 'light');
+      }
+      updateIcons();
+    };
+
+    document.getElementById('theme-toggle')?.addEventListener('click', toggleTheme);
+    document.getElementById('theme-toggle-mobile')?.addEventListener('click', toggleTheme);
+
+    // Smooth scroll to top for HOME link
+    document.querySelectorAll('a[href="#home"]').forEach((link) => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        history.pushState(null, '', '#home');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const openIcon = document.getElementById('menu-open-icon');
+        const closeIcon = document.getElementById('menu-close-icon');
+        if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+          mobileMenu.classList.add('hidden');
+          openIcon?.classList.remove('hidden');
+          closeIcon?.classList.add('hidden');
+        }
+      });
+    });
+
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const openIcon = document.getElementById('menu-open-icon');
+    const closeIcon = document.getElementById('menu-close-icon');
+
+    menuBtn?.addEventListener('click', () => {
+      const isOpen = !mobileMenu?.classList.contains('hidden');
+      mobileMenu?.classList.toggle('hidden', isOpen);
+      openIcon?.classList.toggle('hidden', !isOpen);
+      closeIcon?.classList.toggle('hidden', isOpen);
+    });
+  }
+
+  setupTheme();
+  document.addEventListener('astro:after-swap', setupTheme);
+</script>

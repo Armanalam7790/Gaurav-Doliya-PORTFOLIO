@@ -1,0 +1,54 @@
+---
+import Navbar from "../components/Navbar.astro";
+import Hero from "../components/Hero.astro";
+import Experience from "../components/Experience.astro";
+import "../styles/global.css";
+---
+
+<html lang="en" class="dark">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Gaurav Doliya | Graphic & Motion Designer</title>
+
+		<!-- Modern Google Fonts: Anton (for headings) & Plus Jakarta Sans -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Anton&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+		<!-- Prevent theme flash script (Default: ALWAYS Dark Theme) -->
+		<script is:inline>
+			(() => {
+				// Clear any stale light mode so default is always dark
+				if (typeof localStorage !== 'undefined' && localStorage.getItem('theme') === 'light') {
+					localStorage.removeItem('theme');
+				}
+				if (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('theme') === 'light') {
+					sessionStorage.removeItem('theme');
+				}
+
+				const isDark = (() => {
+					if (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('theme')) {
+						return sessionStorage.getItem('theme') === 'dark';
+					}
+					if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+						return localStorage.getItem('theme') === 'dark';
+					}
+					return true; // Default to dark theme
+				})();
+
+				document.documentElement.classList.toggle('dark', isDark);
+			})();
+		</script>
+	</head>
+	<body class="min-h-screen bg-[#F5F5F5] text-zinc-900 dark:bg-black dark:text-zinc-100 selection:bg-[#7C3AED] selection:text-white transition-colors duration-200">
+		<Navbar />
+		<main>
+			<Hero />
+			<Experience />
+		</main>
+	</body>
+</html>

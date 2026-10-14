@@ -1,0 +1,137 @@
+---
+// src/components/Hero.astro
+---
+
+<section
+  id="home"
+  class="scroll-mt-24 relative overflow-hidden pt-20 pb-20 sm:pt-28 md:pt-36 lg:pt-44 md:pb-32 bg-[#F5F5F5] text-zinc-900 dark:bg-black dark:text-white transition-colors duration-200"
+>
+  <!-- Atmospheric background glow effects -->
+  <div
+    class="pointer-events-none absolute top-1/3 left-1/2 -z-10 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-zinc-200/50 dark:bg-zinc-800/30 blur-[140px] transition-colors duration-200"
+  >
+  </div>
+  <div
+    class="pointer-events-none absolute top-20 right-10 -z-10 h-72 w-72 rounded-full bg-[#7C3AED]/10 blur-[120px]"
+  >
+  </div>
+
+  <div class="mx-auto w-full max-w-7xl px-6 sm:px-8">
+    <div class="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-16">
+      <!-- Left Column: Intro Details -->
+      <div class="flex flex-col items-start lg:col-span-7 pt-2 md:pt-4">
+        <!-- Main Title (GAURAV DOLIYA) -->
+        <h1
+          class="text-4xl font-black uppercase tracking-tight text-zinc-900 dark:text-white sm:text-6xl lg:text-7xl transition-colors duration-200"
+        >
+          Gaurav Doliya
+        </h1>
+
+        <!-- Subtitle / Bio Paragraph -->
+        <p
+          class="mt-6 max-w-2xl sm:text-xl capitalize font-medium leading-snug sm:leading-normal text-zinc-600 dark:text-zinc-300 transition-colors duration-200"
+        >
+          I am a passionate <span
+            class="font-bold text-zinc-900 dark:text-white"
+            >Graphic & Motion Designer</span
+          > crafting compelling visual identities, 2D/3D brand animations, and high-impact
+          digital experiences.
+        </p>
+
+        <!-- Action Buttons (View Resume, Email, LinkedIn) -->
+        <div class="mt-8 flex flex-wrap items-center gap-3.5 sm:gap-4">
+          <!-- View Resume -->
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group inline-flex items-center gap-2 rounded-lg border border-zinc-300 bg-zinc-100 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-zinc-900 shadow-sm transition-all hover:border-[#7C3AED] hover:bg-zinc-200 active:scale-95 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white dark:hover:border-[#7C3AED] dark:hover:bg-zinc-800"
+          >
+            <span>View Resume</span>
+            <svg
+              class="h-4 w-4 text-zinc-500 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-[#7C3AED] dark:text-zinc-400 dark:group-hover:text-[#A78BFA]"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+              ></path>
+            </svg>
+          </a>
+
+          <!-- Email -->
+          <a
+            href="mailto:gaurav@example.com"
+            class="group inline-flex items-center gap-2 rounded-lg border border-zinc-300 bg-white px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-zinc-700 shadow-sm transition-all hover:border-zinc-400 hover:bg-zinc-50 hover:text-zinc-900 active:scale-95 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-300 dark:hover:border-zinc-600 dark:hover:bg-zinc-900 dark:hover:text-white"
+          >
+            <svg
+              class="h-4 w-4 text-zinc-500 transition-colors group-hover:text-zinc-900 dark:text-zinc-400 dark:group-hover:text-white"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+              ></path>
+            </svg>
+            <span>Email</span>
+          </a>
+
+          <!-- LinkedIn -->
+          <a
+            href="https://linkedin.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group inline-flex items-center gap-2 rounded-lg border border-zinc-300 bg-white px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-zinc-700 shadow-sm transition-all hover:border-zinc-400 hover:bg-zinc-50 hover:text-zinc-900 active:scale-95 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-300 dark:hover:border-zinc-600 dark:hover:bg-zinc-900 dark:hover:text-white"
+          >
+            <svg
+              class="h-4 w-4 text-zinc-500 transition-colors group-hover:text-[#0A66C2] dark:text-zinc-400 dark:group-hover:text-[#0A66C2]"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+              ></path>
+            </svg>
+            <span>LinkedIn</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Column: Exact Reference Composition (Wireframe Outline + Solid Block + Monochrome Portrait) -->
+      <div class="flex justify-center lg:col-span-5 lg:justify-end">
+        <div class="group relative mt-6 mb-8 lg:mt-6 lg:mb-4 w-64 sm:w-72 md:w-80 aspect-square">
+          <!-- Element 1: Top-Left Thin Wireframe Outline Box (as in reference image) -->
+          <div
+            class="pointer-events-none absolute -top-6 -left-6 h-full w-full border border-zinc-400 dark:border-zinc-500/50 transition-transform duration-500 ease-out group-hover:-translate-x-2 group-hover:-translate-y-2"
+          >
+          </div>
+
+          <!-- Element 2: Bottom-Right Solid Accent Block -->
+          <div
+            class="pointer-events-none absolute -bottom-6 -right-6 h-full w-full bg-zinc-200 border border-zinc-300 dark:bg-zinc-900 dark:border-zinc-800 transition-transform duration-500 ease-out group-hover:translate-x-2 group-hover:translate-y-2 shadow-xl dark:shadow-2xl"
+          >
+          </div>
+
+          <!-- Element 3: Center Foreground Monochrome Portrait -->
+          <div
+            class="relative z-10 h-full w-full overflow-hidden bg-zinc-100 border border-zinc-300 shadow-xl transition-all duration-500 group-hover:border-zinc-400 dark:bg-black dark:border-zinc-800 dark:shadow-2xl dark:group-hover:border-zinc-600"
+          >
+            <img
+              src="/img.jpg"
+              alt="Gaurav Doliya"
+              class="h-full w-full object-cover contrast-110 brightness-105 transition-transform duration-700 ease-out group-hover:scale-105"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
