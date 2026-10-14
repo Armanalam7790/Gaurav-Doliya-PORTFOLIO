@@ -1,10 +1,13 @@
 ---
+const currentPath = Astro.url.pathname;
+const isHome = currentPath === "/" || currentPath === "";
+
 const links = [
-  { name: "HOME", href: "#home" },
-  { name: "EXPERIENCE", href: "#experience" },
-  { name: "BLOGS", href: "#blogs" },
-  { name: "PROJECTS", href: "#projects" },
-  { name: "CONTACT", href: "#contact" },
+  { name: "HOME", href: isHome ? "#home" : "/#home" },
+  { name: "EXPERIENCE", href: isHome ? "#experience" : "/#experience" },
+  { name: "BLOGS", href: isHome ? "#blogs" : "/#blogs" },
+  { name: "PROJECTS", href: isHome ? "#projects" : "/#projects" },
+  { name: "CONTACT", href: isHome ? "#contact" : "/#contact" },
 ];
 ---
 

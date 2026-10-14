@@ -1,0 +1,148 @@
+---
+// src/components/Contact.astro
+---
+
+<section
+  id="contact"
+  class="scroll-mt-16 relative bg-[#F5F5F5] text-zinc-900 dark:bg-black dark:text-white pt-10 sm:pt-16 pb-14 sm:pb-24 transition-colors duration-200"
+>
+  <div class="mx-auto max-w-7xl px-6 sm:px-8">
+    <!-- Clean Minimalist Header -->
+    <div class="pb-6 sm:pb-8">
+      <h2
+        class="flex flex-wrap items-baseline gap-x-4 sm:gap-x-6 text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-wider text-zinc-900 dark:text-white font-['Anton',sans-serif] transition-colors duration-200"
+      >
+        <span>LET'S</span>
+        <span>TALK</span>
+      </h2>
+      <p
+        class="mt-3 max-w-xl text-sm sm:text-base text-zinc-600 dark:text-zinc-400 font-normal transition-colors duration-200"
+      >
+        Have a project in mind or want to collaborate on 3D motion design? Reach
+        out directly.
+      </p>
+    </div>
+
+    <!-- Full-Width Horizontal Line Divider -->
+    <div
+      class="border-b border-zinc-200 dark:border-zinc-800 transition-colors duration-200 mb-8 sm:mb-12"
+    >
+    </div>
+
+    <!-- Centered Lightweight Minimal Form -->
+    <div class="max-w-2xl mx-auto w-full">
+      <form id="contact-form" class="space-y-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <input
+              type="text"
+              id="contact-name"
+              name="name"
+              required
+              placeholder="Your Name *"
+              class="w-full rounded-xl border border-zinc-300 bg-white/70 dark:bg-zinc-900/50 px-4 py-3 text-sm text-zinc-900 outline-none transition-all placeholder:text-zinc-400 focus:border-[#7C3AED] dark:border-zinc-800 dark:text-white dark:focus:border-[#7C3AED]"
+            />
+          </div>
+
+          <div>
+            <input
+              type="email"
+              id="contact-email"
+              name="email"
+              required
+              placeholder="Email Address *"
+              class="w-full rounded-xl border border-zinc-300 bg-white/70 dark:bg-zinc-900/50 px-4 py-3 text-sm text-zinc-900 outline-none transition-all placeholder:text-zinc-400 focus:border-[#7C3AED] dark:border-zinc-800 dark:text-white dark:focus:border-[#7C3AED]"
+            />
+          </div>
+        </div>
+
+        <div>
+          <textarea
+            id="contact-message"
+            name="message"
+            required
+            rows="5"
+            placeholder="Your Message / Project Details *"
+            class="w-full resize-none rounded-xl border border-zinc-300 bg-white/70 dark:bg-zinc-900/50 p-4 text-sm text-zinc-900 outline-none transition-all placeholder:text-zinc-400 focus:border-[#7C3AED] dark:border-zinc-800 dark:text-white dark:focus:border-[#7C3AED]"
+          ></textarea>
+        </div>
+
+        <div class="pt-2 flex flex-col items-center justify-center gap-3">
+          <button
+            type="submit"
+            id="submit-btn"
+            class="inline-flex items-center justify-center gap-2 rounded-xl bg-[#7C3AED] px-8 py-3 text-xs font-bold uppercase tracking-wider text-white shadow-md transition-all hover:bg-[#6D28D9] active:scale-95"
+          >
+            <span id="btn-text">Send Message</span>
+            <svg
+              class="h-3.5 w-3.5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2.5"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </button>
+
+          <span id="form-feedback" class="hidden text-xs font-bold text-emerald-500">
+            ✓ Message sent! I'll reply soon.
+          </span>
+        </div>
+      </form>
+    </div>
+
+    <!-- Minimalist Footer -->
+    <div
+      class="mt-12 sm:mt-20 border-t border-zinc-200 dark:border-zinc-800/80 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500 dark:text-zinc-400"
+    >
+      <div
+        class="flex items-center gap-2 font-bold text-zinc-900 dark:text-white"
+      >
+        <span>Gaurav Doliya</span>
+        <span class="text-[#7C3AED]">.</span>
+        <span class="font-normal text-zinc-400">© 2026</span>
+      </div>
+
+      <div class="flex items-center gap-6 text-xs">
+        <a href="#home" class="hover:text-[#7C3AED] transition-colors">Top ↑</a>
+        <a href="#experience" class="hover:text-[#7C3AED] transition-colors"
+          >Experience</a
+        >
+        <a href="#blogs" class="hover:text-[#7C3AED] transition-colors">Blogs</a>
+        <a href="#projects" class="hover:text-[#7C3AED] transition-colors">Projects</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Lightweight Form Handler Script -->
+<script is:inline>
+  const form = document.getElementById("contact-form");
+  const feedback = document.getElementById("form-feedback");
+  const btn = document.getElementById("submit-btn");
+  const btnText = document.getElementById("btn-text");
+
+  form?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (btn && btnText) {
+      btn.disabled = true;
+      btnText.textContent = "Sending...";
+    }
+
+    setTimeout(() => {
+      form.reset();
+      if (btn && btnText) {
+        btn.disabled = false;
+        btnText.textContent = "Sent!";
+      }
+      if (feedback) {
+        feedback.classList.remove("hidden");
+        setTimeout(() => {
+          feedback.classList.add("hidden");
+          if (btnText) btnText.textContent = "Send Message";
+        }, 4000);
+      }
+    }, 600);
+  });
+</script>

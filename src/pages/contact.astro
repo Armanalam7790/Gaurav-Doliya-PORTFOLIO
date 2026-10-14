@@ -1,0 +1,54 @@
+---
+// src/pages/contact.astro
+import Navbar from "../components/Navbar.astro";
+import Contact from "../components/Contact.astro";
+import "../styles/global.css";
+---
+
+<html lang="en" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Contact & Inquiries | Gaurav Doliya</title>
+    <meta
+      name="description"
+      content="Get in touch with Gaurav Doliya for 3D motion design, brand visual identities, commercial post-production, and creative masterclasses."
+    />
+
+    <!-- Google Fonts: Anton & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Default to dark theme -->
+    <script is:inline>
+      (() => {
+        const isDark = (() => {
+          if (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('theme')) {
+            return sessionStorage.getItem('theme') === 'dark';
+          }
+          if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+            return localStorage.getItem('theme') === 'dark';
+          }
+          return true;
+        })();
+        document.documentElement.classList.toggle('dark', isDark);
+      })();
+    </script>
+  </head>
+
+  <body
+    class="min-h-screen bg-[#F5F5F5] text-zinc-900 dark:bg-black dark:text-zinc-100 selection:bg-[#7C3AED] selection:text-white transition-colors duration-200"
+  >
+    <Navbar />
+
+    <main>
+      <Contact />
+    </main>
+  </body>
+</html>

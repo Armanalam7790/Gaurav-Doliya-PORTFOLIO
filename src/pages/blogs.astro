@@ -1,0 +1,157 @@
+---
+// src/pages/blogs.astro
+import Navbar from "../components/Navbar.astro";
+import { blogs } from "../data/blogs";
+import "../styles/global.css";
+---
+
+<html lang="en" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Articles & Writing | Gaurav Doliya</title>
+    <meta
+      name="description"
+      content="Articles, workflows, and insights on 3D motion graphics, Octane Render lookdev, and cinematic post-production by Gaurav Doliya."
+    />
+
+    <!-- Google Fonts: Anton & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Default to dark theme -->
+    <script is:inline>
+      (() => {
+        const isDark = (() => {
+          if (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('theme')) {
+            return sessionStorage.getItem('theme') === 'dark';
+          }
+          if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+            return localStorage.getItem('theme') === 'dark';
+          }
+          return true;
+        })();
+        document.documentElement.classList.toggle('dark', isDark);
+      })();
+    </script>
+  </head>
+
+  <body
+    class="min-h-screen bg-[#F5F5F5] text-zinc-900 dark:bg-black dark:text-zinc-100 selection:bg-[#7C3AED] selection:text-white transition-colors duration-200"
+  >
+    <Navbar />
+
+    <main class="py-16 sm:py-20 md:py-24">
+      <div class="mx-auto max-w-7xl px-6 sm:px-8">
+        
+        <!-- Header -->
+        <div class="pb-8">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#7C3AED] mb-3">
+            <a href="/" class="hover:underline">Home</a>
+            <span>/</span>
+            <span>Articles</span>
+          </div>
+
+          <h1
+            class="text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-wider text-zinc-900 dark:text-white font-['Anton',sans-serif]"
+          >
+            <span>ARTICLES &</span>
+            <span>WRITING</span>
+          </h1>
+          <p
+            class="mt-4 max-w-3xl text-sm sm:text-base leading-relaxed text-zinc-600 dark:text-zinc-400"
+          >
+            In-depth breakdowns on 3D lookdev pipelines, kinetic typography choreography, and commercial video post-production workflows.
+          </p>
+        </div>
+
+        <!-- Full-Width Horizontal Line Divider -->
+        <div class="border-b border-zinc-200 dark:border-zinc-800 transition-colors duration-200"></div>
+
+        <!-- Articles Grid (Matching Reference Design) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 lg:gap-8 mt-12">
+          {
+            blogs.map((post) => (
+              <article class="group flex flex-col overflow-hidden rounded-[26px] border border-zinc-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl dark:border-zinc-800/90 dark:bg-[#121215] dark:hover:border-zinc-700 select-none">
+                
+                <!-- Cover Banner with Overlay Pill Tags -->
+                <div class="relative aspect-[16/10] w-full overflow-hidden block">
+                  <img
+                    src={post.coverImage}
+                    alt={post.title}
+                    class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <!-- Dark gradient overlay for badge readability -->
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none"></div>
+
+                  <!-- Pill Tags in Bottom-Left of Image -->
+                  <div class="absolute bottom-3.5 left-4 flex flex-wrap items-center gap-2 z-10">
+                    {post.tags.slice(0, 2).map((tag) => (
+                      <span class="rounded-full bg-black/60 backdrop-blur-md px-3.5 py-1 text-xs font-medium text-white border border-white/20 shadow-sm">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <!-- Card Body -->
+                <div class="p-6 flex flex-col flex-1 justify-between">
+                  <div>
+                    <!-- Title (Non-clickable) -->
+                    <h2 class="text-xl font-bold tracking-tight text-zinc-900 dark:text-white leading-snug">
+                      {post.title}
+                    </h2>
+
+                    <!-- Excerpt -->
+                    <p class="mt-2.5 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400 line-clamp-2">
+                      {post.excerpt}
+                    </p>
+                  </div>
+
+                  <!-- Divider & Footer Row -->
+                  <div class="mt-6 pt-4 border-t border-zinc-100 dark:border-zinc-800/80 flex items-center justify-between">
+                    <!-- Author & Date -->
+                    <div class="flex items-center gap-3">
+                      <img
+                        src={post.author.avatar}
+                        alt={post.author.name}
+                        class="h-9 w-9 rounded-full object-cover ring-2 ring-zinc-200 dark:ring-zinc-800"
+                      />
+                      <div class="flex flex-col">
+                        <span class="text-sm font-bold text-zinc-900 dark:text-white leading-tight">
+                          {post.author.name}
+                        </span>
+                        <span class="text-xs text-zinc-500 dark:text-zinc-400 leading-tight mt-0.5">
+                          {post.date}
+                        </span>
+                      </div>
+                    </div>
+
+                    <!-- Reading Time with Clock Icon -->
+                    <div class="flex items-center gap-1.5 text-xs text-zinc-500 dark:text-zinc-400 font-medium">
+                      <svg class="h-3.5 w-3.5 text-zinc-400 dark:text-zinc-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="9" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 7v5l3 3" />
+                      </svg>
+                      <span>{post.readTime}</span>
+                    </div>
+                  </div>
+
+                </div>
+
+              </article>
+            ))
+          }
+        </div>
+
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,122 @@
+---
+// src/components/Projects.astro
+
+interface Project {
+  id: string;
+  title: string;
+  category: string;
+  tag: string;
+  description: string;
+  tools: string[];
+  year: string;
+}
+
+const projects: Project[] = [
+  {
+    id: "01",
+    title: "Apex Broadcast Anthem",
+    category: "3D Motion Design",
+    tag: "Commercial Film",
+    description: "Commercial anthem film featuring photorealistic 3D simulation passes, studio lighting rigs, and dynamic pacing.",
+    tools: ["Cinema 4D", "Octane Render", "After Effects"],
+    year: "2026",
+  },
+  {
+    id: "02",
+    title: "Kinetic Velocity Identity",
+    category: "Kinetic Typography",
+    tag: "Brand Identity",
+    description: "Spatial type choreography and variable font animation created for an international streaming promo campaign.",
+    tools: ["After Effects", "Illustrator", "Premiere Pro"],
+    year: "2025",
+  },
+  {
+    id: "03",
+    title: "Chroma LookDev Series",
+    category: "Look Development",
+    tag: "CGI & Color",
+    description: "Exploration of micro-roughness dispersion, optical chromatic aberration, and ACES color space management.",
+    tools: ["Cinema 4D", "Octane", "DaVinci Resolve"],
+    year: "2025",
+  },
+];
+---
+
+<section
+  id="projects"
+  class="scroll-mt-16 relative bg-[#F5F5F5] text-zinc-900 dark:bg-black dark:text-white pt-10 sm:pt-20 pb-14 sm:pb-32 transition-colors duration-200"
+>
+  <div class="mx-auto max-w-7xl px-6 sm:px-8">
+    
+    <!-- Top Header Area Matching Portfolio Identity -->
+    <div class="pb-6 sm:pb-8">
+      <div>
+        <h2
+          class="flex flex-wrap items-baseline gap-x-5 sm:gap-x-7 lg:gap-x-9 text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-wider text-zinc-900 dark:text-white font-['Anton',sans-serif] transition-colors duration-200"
+        >
+          <span>FEATURED</span>
+          <span>PROJECTS</span>
+        </h2>
+        <p
+          class="mt-4 max-w-3xl text-sm sm:text-base leading-relaxed text-zinc-600 dark:text-zinc-400 font-normal transition-colors duration-200"
+        >
+          A curated selection of 3D motion graphics, brand identities, and commercial post-production work.
+        </p>
+      </div>
+    </div>
+
+    <!-- Full-Width Horizontal Line Divider -->
+    <div class="border-b border-zinc-200 dark:border-zinc-800 transition-colors duration-200 mb-8 sm:mb-12"></div>
+
+    <!-- Clean Minimalist Project Cards Grid (Simple, No AI Gimmicks) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+      {
+        projects.map((item) => (
+          <article class="flex flex-col rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm transition-all duration-300 hover:border-[#7C3AED]/50 hover:shadow-xl dark:border-zinc-800 dark:bg-[#121215] dark:hover:border-[#7C3AED]/50">
+            
+            <!-- Simple Clean Image Container (Ready for Image) -->
+            <div class="aspect-[16/10] w-full rounded-xl bg-zinc-100 border border-zinc-200/80 dark:bg-zinc-900/50 dark:border-zinc-800/80 overflow-hidden">
+            </div>
+
+            <!-- Content Area -->
+            <div class="mt-5 flex flex-col flex-1 justify-between">
+              <div>
+                <!-- Category & Year -->
+                <div class="flex items-center justify-between text-xs font-semibold">
+                  <span class="uppercase tracking-wider text-[#7C3AED]">
+                    {item.category}
+                  </span>
+                  <span class="text-zinc-400 dark:text-zinc-500 font-mono">
+                    {item.year}
+                  </span>
+                </div>
+
+                <!-- Title -->
+                <h3 class="mt-2 text-xl font-bold tracking-tight text-zinc-900 dark:text-white leading-snug">
+                  {item.title}
+                </h3>
+
+                <!-- Description -->
+                <p class="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400 line-clamp-2">
+                  {item.description}
+                </p>
+              </div>
+
+              <!-- Tools List -->
+              <div class="mt-5 pt-4 border-t border-zinc-100 dark:border-zinc-800/80 flex flex-wrap gap-2">
+                {item.tools.map((tool) => (
+                  <span class="rounded-md border border-zinc-200 bg-zinc-50 px-2.5 py-1 text-xs font-medium text-zinc-700 dark:border-zinc-800 dark:bg-zinc-900/80 dark:text-zinc-300">
+                    {tool}
+                  </span>
+                ))}
+              </div>
+
+            </div>
+
+          </article>
+        ))
+      }
+    </div>
+
+  </div>
+</section>

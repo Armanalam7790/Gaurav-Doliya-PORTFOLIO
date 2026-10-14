@@ -58,11 +58,11 @@ const experiences: ExperienceRole[] = [
 ];
 ---
 
-<section id="experience" class="scroll-mt-16 relative bg-[#F5F5F5] text-zinc-900 dark:bg-black dark:text-white pt-20 pb-32 transition-colors duration-200">
+<section id="experience" class="scroll-mt-16 relative bg-[#F5F5F5] text-zinc-900 dark:bg-black dark:text-white pt-12 sm:pt-20 pb-12 sm:pb-28 transition-colors duration-200">
   <div class="mx-auto max-w-7xl px-6 sm:px-8">
     
     <!-- Top Header Area Matching Hand-drawn Sketch -->
-    <div class="pb-8">
+    <div class="pb-6 sm:pb-8">
       <h2 class="flex flex-wrap items-baseline gap-x-5 sm:gap-x-7 lg:gap-x-9 text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-wider text-zinc-900 dark:text-white font-['Anton',sans-serif] transition-colors duration-200">
         <span>WORK</span>
         <span>EXPERIENCE</span>
@@ -78,7 +78,7 @@ const experiences: ExperienceRole[] = [
     <!-- Experience Items List -->
     <div class="divide-y divide-zinc-200 dark:divide-zinc-800/80 transition-colors duration-200">
       {experiences.map((exp) => (
-        <div class="py-12 sm:py-16">
+        <div class="py-8 sm:py-14 last:pb-0">
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14">
             
             <!-- Left Column: Dates stacked like sketch (AUG 2025 - / PRESENT) -->
