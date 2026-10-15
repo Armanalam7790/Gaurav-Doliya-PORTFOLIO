@@ -2,16 +2,40 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+:root {
+  /* ========================================================
+     GLOBAL ACCENT COLOR CONFIGURATION
+     Change this hex code to update the color across the entire site!
+     ======================================================== */
+  --accent: #df0808;
+  --accent-hover: #b90606;
+
+  /* Neutral clean scrollbar */
+  --scrollbar-thumb: #d4d4d8;
+  --scrollbar-thumb-hover: #a1a1aa;
+}
+
+html.dark,
+.dark {
+  --scrollbar-thumb: #27272a;
+  --scrollbar-thumb-hover: #3f3f46;
+}
+
+@theme {
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+}
+
 @layer base {
   :root {
     color-scheme: light dark;
-    scrollbar-color: #7C3AED transparent;
+    scrollbar-color: var(--scrollbar-thumb) transparent;
     scrollbar-width: thin;
   }
 
   html {
     scroll-behavior: smooth;
-    scrollbar-color: #7C3AED transparent;
+    scrollbar-color: var(--scrollbar-thumb) transparent;
     scrollbar-width: thin;
   }
 
@@ -31,18 +55,18 @@
   }
 }
 
-/* Custom #7C3AED scrollbar */
+/* Custom sleek neutral scrollbar */
 ::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
 }
 ::-webkit-scrollbar-track {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #7C3AED;
+  background: var(--scrollbar-thumb);
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #6D28D9;
+  background: var(--scrollbar-thumb-hover);
 }

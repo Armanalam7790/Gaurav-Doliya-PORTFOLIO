@@ -57,7 +57,7 @@ const nextPost = currentIndex < blogs.length - 1 ? blogs[currentIndex + 1] : nul
   </head>
 
   <body
-    class="min-h-screen bg-[#F5F5F5] text-zinc-900 dark:bg-black dark:text-zinc-100 selection:bg-[#7C3AED] selection:text-white transition-colors duration-200"
+    class="min-h-screen bg-[#F5F5F5] text-zinc-900 dark:bg-black dark:text-zinc-100 selection:bg-accent selection:text-white transition-colors duration-200"
   >
     <Navbar />
 
@@ -68,7 +68,7 @@ const nextPost = currentIndex < blogs.length - 1 ? blogs[currentIndex + 1] : nul
         <div class="mb-10">
           <a
             href="/blogs"
-            class="group inline-flex items-center gap-2 rounded-md border border-zinc-300 bg-white px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-zinc-900 shadow-sm transition-all hover:border-[#7C3AED] hover:bg-[#7C3AED] hover:text-white dark:border-zinc-800 dark:bg-zinc-950 dark:text-white dark:hover:border-[#7C3AED] dark:hover:bg-[#7C3AED]"
+            class="group inline-flex items-center gap-2 rounded-md border border-zinc-300 bg-white px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-zinc-900 shadow-sm transition-all hover:border-accent hover:bg-accent hover:text-white dark:border-zinc-800 dark:bg-zinc-950 dark:text-white dark:hover:border-accent dark:hover:bg-accent"
           >
             <svg
               class="h-3.5 w-3.5 transition-transform group-hover:-translate-x-1"
@@ -88,14 +88,14 @@ const nextPost = currentIndex < blogs.length - 1 ? blogs[currentIndex + 1] : nul
           
           <!-- Category & Date Meta with Square Bullet Accent -->
           <div class="flex flex-wrap items-center gap-3 text-xs font-semibold">
-            <span class="text-[#7C3AED] font-extrabold uppercase tracking-wider">
+            <span class="text-accent font-extrabold uppercase tracking-wider">
               {post.category}
             </span>
-            <span class="h-1.5 w-1.5 bg-[#7C3AED]"></span>
+            <span class="h-1.5 w-1.5 bg-accent"></span>
             <span class="text-zinc-500 dark:text-zinc-400 font-bold uppercase tracking-wider">
               {post.date}
             </span>
-            <span class="h-1.5 w-1.5 bg-[#7C3AED]"></span>
+            <span class="h-1.5 w-1.5 bg-accent"></span>
             <span class="text-zinc-500 dark:text-zinc-400 font-bold uppercase tracking-wider">
               {post.readTime}
             </span>
@@ -136,9 +136,9 @@ const nextPost = currentIndex < blogs.length - 1 ? blogs[currentIndex + 1] : nul
             <button
               id="copy-link-btn"
               type="button"
-              class="inline-flex items-center gap-1.5 rounded-md border border-zinc-300 bg-white px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-zinc-700 shadow-sm transition-all hover:border-[#7C3AED] hover:text-[#7C3AED] dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-300 dark:hover:border-[#7C3AED] dark:hover:text-[#A78BFA]"
+              class="inline-flex items-center gap-1.5 rounded-md border border-zinc-300 bg-white px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-zinc-700 shadow-sm transition-all hover:border-accent hover:text-accent dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-300 dark:hover:border-accent dark:hover:text-accent"
             >
-              <svg class="h-3.5 w-3.5 text-[#7C3AED]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <svg class="h-3.5 w-3.5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
               </svg>
               <span id="copy-text">Share</span>
@@ -159,7 +159,7 @@ const nextPost = currentIndex < blogs.length - 1 ? blogs[currentIndex + 1] : nul
         </div>
 
         <!-- Pull Quote Excerpt -->
-        <div class="my-10 border-l-2 border-[#7C3AED] pl-6 py-2">
+        <div class="my-10 border-l-2 border-accent pl-6 py-2">
           <p class="text-base sm:text-lg font-medium leading-relaxed text-zinc-800 dark:text-zinc-200">
             "{post.excerpt}"
           </p>
@@ -183,7 +183,7 @@ const nextPost = currentIndex < blogs.length - 1 ? blogs[currentIndex + 1] : nul
 
               {sec.callout && (
                 <div class="my-6 rounded-md border border-zinc-200 bg-zinc-100/70 p-5 dark:border-zinc-800 dark:bg-zinc-900/40">
-                  <span class="block text-xs font-bold uppercase tracking-wider text-[#7C3AED] mb-1">
+                  <span class="block text-xs font-bold uppercase tracking-wider text-accent mb-1">
                     ■ KEY TAKEAWAY
                   </span>
                   <p class="text-sm text-zinc-800 dark:text-zinc-200">
@@ -196,7 +196,7 @@ const nextPost = currentIndex < blogs.length - 1 ? blogs[currentIndex + 1] : nul
                 <ul class="my-5 space-y-2.5 pl-1">
                   {sec.listItems.map((item) => (
                     <li class="flex items-start gap-3 text-xs sm:text-sm text-zinc-700 dark:text-zinc-300">
-                      <span class="mt-1.5 h-1.5 w-1.5 flex-none bg-[#7C3AED]" />
+                      <span class="mt-1.5 h-1.5 w-1.5 flex-none bg-accent" />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -216,7 +216,7 @@ const nextPost = currentIndex < blogs.length - 1 ? blogs[currentIndex + 1] : nul
                 class="h-12 w-12 rounded-md object-cover border border-zinc-300 dark:border-zinc-700"
               />
               <div>
-                <span class="block text-xs font-extrabold uppercase tracking-wider text-[#7C3AED]">
+                <span class="block text-xs font-extrabold uppercase tracking-wider text-accent">
                   Written By
                 </span>
                 <span class="block text-base font-bold text-zinc-900 dark:text-white">
@@ -230,7 +230,7 @@ const nextPost = currentIndex < blogs.length - 1 ? blogs[currentIndex + 1] : nul
 
             <a
               href="/#contact"
-              class="inline-flex items-center gap-2 rounded-md border border-zinc-300 bg-white px-4 py-2 text-xs font-bold uppercase tracking-wider text-zinc-900 shadow-sm transition-all hover:border-[#7C3AED] hover:bg-[#7C3AED] hover:text-white dark:border-zinc-800 dark:bg-zinc-950 dark:text-white dark:hover:border-[#7C3AED] dark:hover:bg-[#7C3AED]"
+              class="inline-flex items-center gap-2 rounded-md border border-zinc-300 bg-white px-4 py-2 text-xs font-bold uppercase tracking-wider text-zinc-900 shadow-sm transition-all hover:border-accent hover:bg-accent hover:text-white dark:border-zinc-800 dark:bg-zinc-950 dark:text-white dark:hover:border-accent dark:hover:bg-accent"
             >
               <span>Get in Touch</span>
               <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
@@ -245,12 +245,12 @@ const nextPost = currentIndex < blogs.length - 1 ? blogs[currentIndex + 1] : nul
           {prevPost ? (
             <a
               href={`/blog/${prevPost.slug}`}
-              class="group flex flex-col justify-between rounded-md border border-zinc-300 dark:border-zinc-800 p-5 hover:border-[#7C3AED] transition-colors bg-white/50 dark:bg-zinc-950/50"
+              class="group flex flex-col justify-between rounded-md border border-zinc-300 dark:border-zinc-800 p-5 hover:border-zinc-400 dark:hover:border-zinc-700 transition-colors bg-white/50 dark:bg-zinc-950/50"
             >
-              <span class="text-[11px] font-bold uppercase tracking-wider text-[#7C3AED] flex items-center gap-1.5">
+              <span class="text-[11px] font-bold uppercase tracking-wider text-accent flex items-center gap-1.5">
                 ← Previous Article
               </span>
-              <h4 class="mt-2 text-sm font-bold text-zinc-900 dark:text-white group-hover:text-[#7C3AED] dark:group-hover:text-[#A78BFA] transition-colors line-clamp-2">
+              <h4 class="mt-2 text-sm font-bold text-zinc-900 dark:text-white group-hover:text-zinc-600 dark:group-hover:text-zinc-200 transition-colors line-clamp-2">
                 {prevPost.title}
               </h4>
             </a>
@@ -261,12 +261,12 @@ const nextPost = currentIndex < blogs.length - 1 ? blogs[currentIndex + 1] : nul
           {nextPost && (
             <a
               href={`/blog/${nextPost.slug}`}
-              class="group flex flex-col justify-between text-right rounded-md border border-zinc-300 dark:border-zinc-800 p-5 hover:border-[#7C3AED] transition-colors bg-white/50 dark:bg-zinc-950/50"
+              class="group flex flex-col justify-between text-right rounded-md border border-zinc-300 dark:border-zinc-800 p-5 hover:border-zinc-400 dark:hover:border-zinc-700 transition-colors bg-white/50 dark:bg-zinc-950/50"
             >
-              <span class="text-[11px] font-bold uppercase tracking-wider text-[#7C3AED] flex items-center justify-end gap-1.5">
+              <span class="text-[11px] font-bold uppercase tracking-wider text-accent flex items-center justify-end gap-1.5">
                 Next Article →
               </span>
-              <h4 class="mt-2 text-sm font-bold text-zinc-900 dark:text-white group-hover:text-[#7C3AED] dark:group-hover:text-[#A78BFA] transition-colors line-clamp-2">
+              <h4 class="mt-2 text-sm font-bold text-zinc-900 dark:text-white group-hover:text-zinc-600 dark:group-hover:text-zinc-200 transition-colors line-clamp-2">
                 {nextPost.title}
               </h4>
             </a>

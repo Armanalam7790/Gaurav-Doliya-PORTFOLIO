@@ -43,7 +43,7 @@ import "../styles/global.css";
   </head>
 
   <body
-    class="min-h-screen bg-[#F5F5F5] text-zinc-900 dark:bg-black dark:text-zinc-100 selection:bg-[#7C3AED] selection:text-white transition-colors duration-200"
+    class="min-h-screen bg-[#F5F5F5] text-zinc-900 dark:bg-black dark:text-zinc-100 selection:bg-accent selection:text-white transition-colors duration-200"
   >
     <Navbar />
 
@@ -52,7 +52,7 @@ import "../styles/global.css";
         
         <!-- Header & Breadcrumbs -->
         <div class="pb-8">
-          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#7C3AED] mb-3">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-accent mb-3">
             <a href="/" class="hover:underline flex items-center gap-1">
               <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
@@ -68,7 +68,7 @@ import "../styles/global.css";
               class="text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-wider text-zinc-900 dark:text-white font-['Anton',sans-serif]"
             >
               <span>ARTICLES &</span>
-              <span class="text-[#7C3AED] dark:text-[#A78BFA] ml-2">WRITING</span>
+              <span class="text-accent ml-2">WRITING</span>
             </h1>
             <p
               class="mt-4 max-w-3xl text-sm sm:text-base leading-relaxed text-zinc-600 dark:text-zinc-400"
@@ -90,7 +90,7 @@ import "../styles/global.css";
             blogs.map((post) => (
               <a
                 href={`/blog/${post.slug}`}
-                class="blog-card group flex flex-col overflow-hidden rounded-[26px] border border-zinc-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl dark:border-zinc-800/90 dark:bg-[#121215] dark:hover:border-[#7C3AED]/60"
+                class="blog-card group flex flex-col overflow-hidden rounded-[26px] border border-zinc-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl dark:border-zinc-800/90 dark:bg-[#121215] hover:border-zinc-300 dark:hover:border-zinc-700"
               >
                 <!-- Blank Image Placeholder Container -->
                 <div class="relative aspect-[16/10] w-full bg-zinc-100 dark:bg-zinc-900/60 border-b border-zinc-200 dark:border-zinc-800/80 transition-colors"></div>
@@ -99,7 +99,7 @@ import "../styles/global.css";
                 <div class="p-6 flex flex-col flex-1 justify-between">
                   <div>
                     <!-- Title -->
-                    <h2 class="text-xl font-bold tracking-tight text-zinc-900 dark:text-white leading-snug group-hover:text-[#7C3AED] dark:group-hover:text-[#A78BFA] transition-colors">
+                    <h2 class="text-xl font-bold tracking-tight text-zinc-900 dark:text-white leading-snug group-hover:text-zinc-600 dark:group-hover:text-zinc-200 transition-colors">
                       {post.title}
                     </h2>
 

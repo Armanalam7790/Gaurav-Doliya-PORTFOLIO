@@ -110,14 +110,14 @@ const experiences: ExperienceRole[] = [
             <!-- Left Column: Dates stacked like sketch (AUG 2025 - / PRESENT) -->
             <div class="lg:col-span-3 flex lg:flex-col items-baseline lg:items-start justify-between lg:justify-start gap-1">
               <div>
-                <span class="block text-sm sm:text-base font-extrabold uppercase tracking-wider text-[#7C3AED]">
+                <span class="block text-sm sm:text-base font-extrabold uppercase tracking-wider text-accent">
                   {exp.periodLine1}
                 </span>
-                <span class="block text-sm sm:text-base font-extrabold uppercase tracking-wider text-[#7C3AED]">
+                <span class="block text-sm sm:text-base font-extrabold uppercase tracking-wider text-accent">
                   {exp.periodLine2}
                 </span>
               </div>
-              <div class="hidden lg:block mt-4 h-2 w-2 bg-[#7C3AED]"></div>
+              <div class="hidden lg:block mt-4 h-2 w-2 bg-accent"></div>
             </div>
 
             <!-- Right Column: Role Title, Company, 2x2 Grid of Achievements, Tool Chips -->
@@ -128,14 +128,14 @@ const experiences: ExperienceRole[] = [
               </h3>
               <p class="mt-1 text-xs sm:text-sm font-medium">
                 <span class="text-zinc-800 dark:text-zinc-200 font-semibold">{exp.company}</span>
-                <span class="text-[#7C3AED] dark:text-[#7C3AED] font-semibold"> • {exp.location}</span>
+                <span class="text-accent font-semibold"> • {exp.location}</span>
               </p>
 
               <!-- 2x2 Grid of Achievements with Square Accent Bullets -->
               <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-6">
                 {exp.achievements.map((point) => (
                   <div class="flex items-start gap-3">
-                    <span class="mt-2 h-1.5 w-1.5 flex-none bg-[#7C3AED]"></span>
+                    <span class="mt-2 h-1.5 w-1.5 flex-none bg-accent"></span>
                     <p class="text-xs sm:text-sm leading-relaxed text-zinc-600 dark:text-zinc-300 transition-colors duration-200">
                       {point}
                     </p>
@@ -146,7 +146,7 @@ const experiences: ExperienceRole[] = [
               <!-- Tools / Software Badges Row (as drawn in boxes in the sketch) -->
               <div class="mt-8 flex flex-wrap gap-2.5">
                 {exp.tools.map((tool) => (
-                  <span class="rounded-md border border-zinc-300 bg-zinc-100 px-3.5 py-1.5 text-xs font-semibold text-zinc-800 shadow-sm transition-all hover:border-[#7C3AED] hover:bg-zinc-200 hover:text-[#7C3AED] dark:border-zinc-800 dark:bg-zinc-900/90 dark:text-zinc-300 dark:hover:border-[#7C3AED] dark:hover:bg-zinc-800 dark:hover:text-white">
+                  <span class="rounded-md border border-zinc-300 bg-zinc-100 px-3.5 py-1.5 text-xs font-semibold text-zinc-800 shadow-sm transition-all hover:border-accent hover:bg-zinc-200 hover:text-accent dark:border-zinc-800 dark:bg-zinc-900/90 dark:text-zinc-300 dark:hover:border-accent dark:hover:bg-zinc-800 dark:hover:text-white">
                     {tool}
                   </span>
                 ))}

@@ -31,7 +31,7 @@ const featuredBlogs = blogs.slice(0, 3);
       <!-- Link to the dedicated blogs page -->
       <a
         href="/blogs"
-        class="group inline-flex items-center gap-2 self-start sm:self-end rounded-full border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900/80 px-5 py-2.5 text-xs font-semibold text-zinc-900 dark:text-white shadow-sm transition-all hover:border-[#7C3AED] hover:bg-[#7C3AED] hover:text-white dark:hover:border-[#7C3AED] dark:hover:bg-[#7C3AED]"
+        class="group inline-flex items-center gap-2 self-start sm:self-end rounded-full border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900/80 px-5 py-2.5 text-xs font-semibold text-zinc-900 dark:text-white shadow-sm transition-all hover:border-accent  hover:text-white dark:hover:border-accent dark:hover:bg-accent"
       >
         <span>View All Articles ({blogs.length})</span>
         <svg
@@ -55,7 +55,7 @@ const featuredBlogs = blogs.slice(0, 3);
         featuredBlogs.map((post) => (
           <a
             href={`/blog/${post.slug}`}
-            class="group flex flex-col overflow-hidden rounded-[26px] border border-zinc-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl dark:border-zinc-800/90 dark:bg-[#121215] dark:hover:border-[#7C3AED]/50"
+            class="group flex flex-col overflow-hidden rounded-[26px] border border-zinc-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl dark:border-zinc-800/90 dark:bg-[#121215] hover:border-zinc-300 dark:hover:border-zinc-700"
           >
             <!-- Blank Image Placeholder Area -->
             <div class="relative aspect-[16/10] w-full bg-zinc-100 dark:bg-zinc-900/60 border-b border-zinc-200 dark:border-zinc-800/80 transition-colors"></div>
@@ -64,7 +64,7 @@ const featuredBlogs = blogs.slice(0, 3);
             <div class="p-6 flex flex-col flex-1 justify-between">
               <div>
                 <!-- Title -->
-                <h3 class="text-xl font-bold tracking-tight text-zinc-900 dark:text-white leading-snug group-hover:text-[#7C3AED] dark:group-hover:text-[#A78BFA] transition-colors">
+                <h3 class="text-xl font-bold tracking-tight text-zinc-900 dark:text-white leading-snug group-hover:text-zinc-600 dark:group-hover:text-zinc-200 transition-colors">
                   {post.title}
                 </h3>
 
