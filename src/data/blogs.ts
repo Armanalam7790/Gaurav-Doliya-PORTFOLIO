@@ -40,7 +40,7 @@ export const blogs: BlogPost[] = [
       avatar: "/img.jpg",
     },
     excerpt: "Achieving cinematic photorealism in 3D motion graphics by understanding micro-surface imperfections, Octane nodes, and light bounce.",
-    tags: ["3D LookDev", "Octane"],
+    tags: ["3D LookDev", "Octane", "Cinema 4D"],
     sections: [
       {
         heading: "1. The Anatomy of Surface Imperfections",
@@ -86,8 +86,8 @@ export const blogs: BlogPost[] = [
       role: "Graphic & Motion Designer",
       avatar: "/img.jpg",
     },
-    excerpt: "Exploring the latest trends in kinetic easing curves, variable typography, and fluid micro-interactions.",
-    tags: ["Typography", "Motion"],
+    excerpt: "Exploring the latest trends in kinetic easing curves, variable typography, and fluid micro-interactions for modern branding.",
+    tags: ["Typography", "Motion", "After Effects"],
     sections: [
       {
         heading: "1. Motion as Brand DNA",
@@ -133,7 +133,7 @@ export const blogs: BlogPost[] = [
       avatar: "/img.jpg",
     },
     excerpt: "How structured ACES node trees and color theory turn raw captured footage into broadcast-grade visual spectacle.",
-    tags: ["Color Grading", "DaVinci"],
+    tags: ["Color Grading", "DaVinci", "ACES"],
     sections: [
       {
         heading: "1. Building a Bulletproof Node Tree",
@@ -160,6 +160,122 @@ export const blogs: BlogPost[] = [
         paragraphs: [
           "A master grade must hold up across calibrated cinema monitors, OLED smartphone displays, and compressed social media streaming platforms.",
           "Always verify REC.709 Gamma 2.4 and Rec.709-A tags to ensure gamma consistency between macOS QuickTime and web browsers."
+        ]
+      }
+    ]
+  },
+  {
+    id: "4",
+    slug: "procedural-world-building-geometry-nodes",
+    title: "Procedural World-Building with Geometry Nodes & Generative Systems",
+    subtitle: "Harnessing algorithmic scattering, recursive math vectors, and field modifiers to construct infinite abstract landscapes.",
+    date: "Jul 12, 2026",
+    category: "Procedural 3D",
+    readTime: "7 min read",
+    coverImage: "/blogs/wave4.jpg",
+    author: {
+      name: "Gaurav Doliya",
+      role: "Graphic & Motion Designer",
+      avatar: "/img.jpg",
+    },
+    excerpt: "Building high-performance procedural environments using field-based math nodes, weight distributions, and real-time instancing.",
+    tags: ["Geometry Nodes", "Blender", "Procedural"],
+    sections: [
+      {
+        heading: "1. The Shift to Non-Destructive Modifiers",
+        paragraphs: [
+          "Gone are the days of manual polygon sculpting for dense environmental set dressings. Modern production demands responsive asset generation that can pivot instantly when art directors change camera paths.",
+          "Geometry nodes treat geometries as pure data attributes—positions, normals, tangents, and point clouds that can be mapped via Perlin noise curves and gradient vectors."
+        ],
+        callout: "When your topology is purely algorithmic, altering terrain height or object density takes seconds rather than days."
+      },
+      {
+        heading: "2. Optimizing Point Clouds for Heavy Instancing",
+        paragraphs: [
+          "Displaying millions of geometric instances can bring even 64GB workstations to a halt. The key lies in camera-frustum culling and distance-based LOD (Level of Detail) node groups.",
+          "By calculating the vector dot product between the camera ray and terrain normals, we can automatically discard backface points and decimate geometry outside the active frame."
+        ],
+        listItems: [
+          "Implement frustum culling before feeding points into the Instance on Points node.",
+          "Store random seed integers as point attributes for varied shader permutations.",
+          "Use Raycast nodes to dynamically conform foliage roots to shifting procedural ground."
+        ]
+      }
+    ]
+  },
+  {
+    id: "5",
+    slug: "sound-design-kinetic-motion-graphics",
+    title: "Sound Design for Motion: The Invisible Half of Kinetic Storytelling",
+    subtitle: "Why audio transients, sub-bass impacts, and granular textures dictate perceived animation velocity.",
+    date: "Jun 24, 2026",
+    category: "Audio Craft",
+    readTime: "5 min read",
+    coverImage: "/blogs/wave5.jpg",
+    author: {
+      name: "Gaurav Doliya",
+      role: "Graphic & Motion Designer",
+      avatar: "/img.jpg",
+    },
+    excerpt: "How pairing rhythmic riser frequencies, tactile Foley clicks, and whooshes elevates 3D motion into visceral experiences.",
+    tags: ["Sound Design", "Audio Craft", "Foley"],
+    sections: [
+      {
+        heading: "1. The Psychological Weight of Frequency",
+        paragraphs: [
+          "A stunning 3D metallic sphere falling into place looks hollow without low-end sub-frequency weight. The human brain perceives visual velocity and mass largely through corresponding acoustic feedback.",
+          "By layering an 808 sub-drop (40Hz–80Hz) with a crisp mechanical latch sound at the exact apex of deceleration, the visual element gains immediate physical consequence."
+        ],
+        callout: "Audio doesn't accompany motion—it completes the physical illusion that light and pixels alone cannot achieve."
+      },
+      {
+        heading: "2. Micro-Whooshes & Kinetic Timing",
+        paragraphs: [
+          "Syncing sound effects 1 or 2 frames *before* the visual strike prepares the spectator's nervous system for impact, amplifying the perceived punch.",
+          "Synthesizing customized white-noise sweeps and pitched Doppler whooshes helps lead the viewer's eye along rapid camera moves and whip-pan transitions."
+        ],
+        listItems: [
+          "Pre-shift riser audio by 24ms to 48ms to prime the listener's focus.",
+          "Use high-pass filters on background beds to leave sonic space for transient hits.",
+          "Automate stereo panning directly alongside 3D camera tracker coordinates."
+        ]
+      }
+    ]
+  },
+  {
+    id: "6",
+    slug: "unreal-engine-realtime-vfx-commercials",
+    title: "Directing Real-Time VFX: Unreal Engine 5 for Commercial LookDev",
+    subtitle: "Lumen global illumination, Nanite micro-geometry, and virtual camera tracking in modern broadcast pipelines.",
+    date: "May 08, 2026",
+    category: "Real-Time VFX",
+    readTime: "6 min read",
+    coverImage: "/blogs/wave6.jpg",
+    author: {
+      name: "Gaurav Doliya",
+      role: "Graphic & Motion Designer",
+      avatar: "/img.jpg",
+    },
+    excerpt: "Bridging the gap between traditional pre-rendered 3D motion design and zero-wait real-time game engine production.",
+    tags: ["Unreal Engine 5", "Real-Time", "VFX"],
+    sections: [
+      {
+        heading: "1. Zero-Render Waiting: The Real-Time Revolution",
+        paragraphs: [
+          "Waiting 4 hours for an Octane render pass to finish just to spot an erroneous shadow angle is rapidly becoming obsolete. Unreal Engine 5's Lumen illumination engine provides dynamic bounce lighting at 60 FPS.",
+          "This immediate visual feedback loop allows motion directors to iterate on framing, material refractions, and atmosphere in front of clients in real time."
+        ],
+        callout: "Real-time production transforms 3D design from a slow batch-rendering process into an interactive digital film set."
+      },
+      {
+        heading: "2. Cinematic Virtual Cameras (VCam)",
+        paragraphs: [
+          "By pairing an iPad running Unreal VCam with live AR tracking, designers can physically walk around a digital set, introducing natural handheld camera micro-jitters, organic zoom pulls, and realistic parallax that is notoriously difficult to keyframe manually."
+        ],
+        listItems: [
+          "Leverage Nanite virtualization for multi-million polygon CAD models without baking normal maps.",
+          "Utilize Post-Process volumes for custom anamorphic flare distortion and chromatic aberration.",
+          "Export final high-resolution EXR sequences with Movie Render Queue for composite finishing."
         ]
       }
     ]

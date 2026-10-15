@@ -1,11 +1,12 @@
 ---
 const currentPath = Astro.url.pathname;
 const isHome = currentPath === "/" || currentPath === "";
+const isBlogPage = currentPath.startsWith("/blog") || currentPath.startsWith("/blogs");
 
 const links = [
-  { name: "HOME", href: isHome ? "#home" : "/#home" },
+  { name: "HOME", href: isHome ? "#home" : "/" },
   { name: "EXPERIENCE", href: isHome ? "#experience" : "/#experience" },
-  { name: "BLOGS", href: isHome ? "#blogs" : "/#blogs" },
+  { name: "BLOGS", href: "/blogs", isActive: isBlogPage },
   { name: "PROJECTS", href: isHome ? "#projects" : "/#projects" },
   { name: "CONTACT", href: isHome ? "#contact" : "/#contact" },
 ];
@@ -26,7 +27,11 @@ const links = [
       {links.map((link) => (
         <a
           href={link.href}
-          class="text-xs font-semibold tracking-wider text-zinc-600 transition-colors hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white"
+          class={`text-xs font-semibold tracking-wider transition-colors ${
+            link.isActive
+              ? "text-[#7C3AED] dark:text-[#A78BFA] font-bold"
+              : "text-zinc-600 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white"
+          }`}
         >
           {link.name}
         </a>
@@ -37,7 +42,7 @@ const links = [
     <div class="hidden md:flex flex-1 items-center justify-end gap-3">
       <!-- RESUME Button (Boxed outlined button as drawn) -->
       <a
-        href="/resume.pdf"
+        href="/Gaurav_Doliya_CV_OCT_2026.pdf"
         target="_blank"
         rel="noopener noreferrer"
         class="rounded-md border border-zinc-300 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-zinc-900 transition-all hover:border-zinc-900 hover:bg-zinc-100 active:scale-95 dark:border-zinc-700 dark:text-zinc-100 dark:hover:border-zinc-300 dark:hover:bg-zinc-900"
@@ -101,13 +106,17 @@ const links = [
       {links.map((link) => (
         <a
           href={link.href}
-          class="text-xs font-semibold tracking-wider text-zinc-700 transition-colors hover:text-zinc-950 dark:text-zinc-300 dark:hover:text-white"
+          class={`text-xs font-semibold tracking-wider transition-colors ${
+            link.isActive
+              ? "text-[#7C3AED] dark:text-[#A78BFA] font-bold"
+              : "text-zinc-700 hover:text-zinc-950 dark:text-zinc-300 dark:hover:text-white"
+          }`}
         >
           {link.name}
         </a>
       ))}
       <a
-        href="/resume.pdf"
+        href="/Gaurav_Doliya_CV_OCT_2026.pdf"
         target="_blank"
         rel="noopener noreferrer"
         class="mt-2 inline-flex w-fit items-center justify-center rounded-md border border-zinc-300 px-4 py-2 text-xs font-bold uppercase tracking-wider text-zinc-900 transition-all hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-100 dark:hover:bg-zinc-900"

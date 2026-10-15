@@ -67,7 +67,7 @@ const nextPost = currentIndex < blogs.length - 1 ? blogs[currentIndex + 1] : nul
         <!-- Back Navigation Button -->
         <div class="mb-10">
           <a
-            href="/#blogs"
+            href="/blogs"
             class="group inline-flex items-center gap-2 rounded-md border border-zinc-300 bg-white px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-zinc-900 shadow-sm transition-all hover:border-[#7C3AED] hover:bg-[#7C3AED] hover:text-white dark:border-zinc-800 dark:bg-zinc-950 dark:text-white dark:hover:border-[#7C3AED] dark:hover:bg-[#7C3AED]"
           >
             <svg
@@ -146,19 +146,12 @@ const nextPost = currentIndex < blogs.length - 1 ? blogs[currentIndex + 1] : nul
           </div>
         </header>
 
-        <!-- Featured Wave Banner (Matching Blog Card Design) -->
-        <div class="my-10 relative overflow-hidden rounded-3xl border border-zinc-200 dark:border-zinc-800/80 aspect-[16/9] sm:aspect-[21/9] shadow-xl">
-          <img
-            src={post.coverImage}
-            alt={post.title}
-            class="h-full w-full object-cover"
-          />
-          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none"></div>
-
+        <!-- Featured Banner (Blank Image Space Container) -->
+        <div class="my-10 relative overflow-hidden rounded-3xl border border-zinc-200 dark:border-zinc-800/80 aspect-[16/9] sm:aspect-[21/9] bg-zinc-100 dark:bg-[#121215] shadow-inner flex items-end p-5 sm:p-7">
           <!-- Bottom Pill Badges -->
-          <div class="absolute bottom-4 left-5 flex flex-wrap items-center gap-2 z-10">
+          <div class="flex flex-wrap items-center gap-2 z-10">
             {post.tags.map((tag) => (
-              <span class="rounded-full bg-black/60 backdrop-blur-md px-3.5 py-1 text-xs font-medium text-white border border-white/20 shadow-sm">
+              <span class="rounded-full bg-zinc-200/90 dark:bg-zinc-800/90 px-3.5 py-1.5 text-xs font-medium text-zinc-700 dark:text-zinc-300 border border-zinc-300/60 dark:border-zinc-700/60 shadow-sm">
                 {tag}
               </span>
             ))}

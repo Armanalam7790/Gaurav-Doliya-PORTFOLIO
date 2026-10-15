@@ -1,0 +1,150 @@
+---
+// src/pages/blog.astro
+import Navbar from "../components/Navbar.astro";
+import { blogs } from "../data/blogs";
+import "../styles/global.css";
+---
+
+<html lang="en" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Articles & Writing | Gaurav Doliya</title>
+    <meta
+      name="description"
+      content="Articles, workflows, and insights on 3D motion graphics, Octane Render lookdev, and cinematic post-production by Gaurav Doliya."
+    />
+
+    <!-- Google Fonts: Anton & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Default to dark theme -->
+    <script is:inline>
+      (() => {
+        const isDark = (() => {
+          if (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('theme')) {
+            return sessionStorage.getItem('theme') === 'dark';
+          }
+          if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+            return localStorage.getItem('theme') === 'dark';
+          }
+          return true;
+        })();
+        document.documentElement.classList.toggle('dark', isDark);
+      })();
+    </script>
+  </head>
+
+  <body
+    class="min-h-screen bg-[#F5F5F5] text-zinc-900 dark:bg-black dark:text-zinc-100 selection:bg-[#7C3AED] selection:text-white transition-colors duration-200"
+  >
+    <Navbar />
+
+    <main class="py-12 sm:py-16 md:py-20">
+      <div class="mx-auto max-w-7xl px-6 sm:px-8">
+        
+        <!-- Header & Breadcrumbs -->
+        <div class="pb-8">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#7C3AED] mb-3">
+            <a href="/" class="hover:underline flex items-center gap-1">
+              <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+              </svg>
+              <span>Home</span>
+            </a>
+            <span class="text-zinc-400">/</span>
+            <span class="text-zinc-600 dark:text-zinc-400">Articles</span>
+          </div>
+
+          <div>
+            <h1
+              class="text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-wider text-zinc-900 dark:text-white font-['Anton',sans-serif]"
+            >
+              <span>ARTICLES &</span>
+              <span class="text-[#7C3AED] dark:text-[#A78BFA] ml-2">WRITING</span>
+            </h1>
+            <p
+              class="mt-4 max-w-3xl text-sm sm:text-base leading-relaxed text-zinc-600 dark:text-zinc-400"
+            >
+              In-depth breakdowns on 3D lookdev pipelines, kinetic typography choreography, and commercial video post-production workflows.
+            </p>
+          </div>
+        </div>
+
+        <!-- Full-Width Horizontal Line Divider -->
+        <div class="border-b border-zinc-200 dark:border-zinc-800 transition-colors duration-200"></div>
+
+        <!-- Articles Grid -->
+        <div
+          id="blogs-grid"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 lg:gap-8 mt-12"
+        >
+          {
+            blogs.map((post) => (
+              <a
+                href={`/blog/${post.slug}`}
+                class="blog-card group flex flex-col overflow-hidden rounded-[26px] border border-zinc-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl dark:border-zinc-800/90 dark:bg-[#121215] dark:hover:border-[#7C3AED]/60"
+              >
+                <!-- Blank Image Placeholder Container -->
+                <div class="relative aspect-[16/10] w-full bg-zinc-100 dark:bg-zinc-900/60 border-b border-zinc-200 dark:border-zinc-800/80 transition-colors"></div>
+
+                <!-- Card Body -->
+                <div class="p-6 flex flex-col flex-1 justify-between">
+                  <div>
+                    <!-- Title -->
+                    <h2 class="text-xl font-bold tracking-tight text-zinc-900 dark:text-white leading-snug group-hover:text-[#7C3AED] dark:group-hover:text-[#A78BFA] transition-colors">
+                      {post.title}
+                    </h2>
+
+                    <!-- Excerpt -->
+                    <p class="mt-2.5 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400 line-clamp-2">
+                      {post.excerpt}
+                    </p>
+                  </div>
+
+                  <!-- Divider & Footer Row -->
+                  <div class="mt-6 pt-4 border-t border-zinc-100 dark:border-zinc-800/80 flex items-center justify-between">
+                    <!-- Author & Date -->
+                    <div class="flex items-center gap-3">
+                      <img
+                        src={post.author.avatar}
+                        alt={post.author.name}
+                        class="h-9 w-9 rounded-full object-cover ring-2 ring-zinc-200 dark:ring-zinc-800"
+                      />
+                      <div class="flex flex-col">
+                        <span class="text-sm font-bold text-zinc-900 dark:text-white leading-tight">
+                          {post.author.name}
+                        </span>
+                        <span class="text-xs text-zinc-500 dark:text-zinc-400 leading-tight mt-0.5">
+                          {post.date}
+                        </span>
+                      </div>
+                    </div>
+
+                    <!-- Reading Time with Clock Icon -->
+                    <div class="flex items-center gap-1.5 text-xs text-zinc-500 dark:text-zinc-400 font-medium">
+                      <svg class="h-3.5 w-3.5 text-zinc-400 dark:text-zinc-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="9" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 7v5l3 3" />
+                      </svg>
+                      <span>{post.readTime}</span>
+                    </div>
+                  </div>
+
+                </div>
+              </a>
+            ))
+          }
+        </div>
+
+      </div>
+    </main>
+  </body>
+</html>

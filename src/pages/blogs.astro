@@ -10,7 +10,7 @@ import "../styles/global.css";
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Articles & Writing | Gaurav Doliya</title>
     <meta
       name="description"
@@ -47,65 +47,59 @@ import "../styles/global.css";
   >
     <Navbar />
 
-    <main class="py-16 sm:py-20 md:py-24">
+    <main class="py-12 sm:py-16 md:py-20">
       <div class="mx-auto max-w-7xl px-6 sm:px-8">
         
-        <!-- Header -->
+        <!-- Header & Breadcrumbs -->
         <div class="pb-8">
           <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#7C3AED] mb-3">
-            <a href="/" class="hover:underline">Home</a>
-            <span>/</span>
-            <span>Articles</span>
+            <a href="/" class="hover:underline flex items-center gap-1">
+              <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+              </svg>
+              <span>Home</span>
+            </a>
+            <span class="text-zinc-400">/</span>
+            <span class="text-zinc-600 dark:text-zinc-400">Articles</span>
           </div>
 
-          <h1
-            class="text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-wider text-zinc-900 dark:text-white font-['Anton',sans-serif]"
-          >
-            <span>ARTICLES &</span>
-            <span>WRITING</span>
-          </h1>
-          <p
-            class="mt-4 max-w-3xl text-sm sm:text-base leading-relaxed text-zinc-600 dark:text-zinc-400"
-          >
-            In-depth breakdowns on 3D lookdev pipelines, kinetic typography choreography, and commercial video post-production workflows.
-          </p>
+          <div>
+            <h1
+              class="text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-wider text-zinc-900 dark:text-white font-['Anton',sans-serif]"
+            >
+              <span>ARTICLES &</span>
+              <span class="text-[#7C3AED] dark:text-[#A78BFA] ml-2">WRITING</span>
+            </h1>
+            <p
+              class="mt-4 max-w-3xl text-sm sm:text-base leading-relaxed text-zinc-600 dark:text-zinc-400"
+            >
+              In-depth breakdowns on 3D lookdev pipelines, kinetic typography choreography, and commercial video post-production workflows.
+            </p>
+          </div>
         </div>
 
         <!-- Full-Width Horizontal Line Divider -->
         <div class="border-b border-zinc-200 dark:border-zinc-800 transition-colors duration-200"></div>
 
-        <!-- Articles Grid (Matching Reference Design) -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 lg:gap-8 mt-12">
+        <!-- Articles Grid -->
+        <div
+          id="blogs-grid"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 lg:gap-8 mt-12"
+        >
           {
             blogs.map((post) => (
-              <article class="group flex flex-col overflow-hidden rounded-[26px] border border-zinc-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl dark:border-zinc-800/90 dark:bg-[#121215] dark:hover:border-zinc-700 select-none">
-                
-                <!-- Cover Banner with Overlay Pill Tags -->
-                <div class="relative aspect-[16/10] w-full overflow-hidden block">
-                  <img
-                    src={post.coverImage}
-                    alt={post.title}
-                    class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                    loading="lazy"
-                  />
-                  <!-- Dark gradient overlay for badge readability -->
-                  <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none"></div>
-
-                  <!-- Pill Tags in Bottom-Left of Image -->
-                  <div class="absolute bottom-3.5 left-4 flex flex-wrap items-center gap-2 z-10">
-                    {post.tags.slice(0, 2).map((tag) => (
-                      <span class="rounded-full bg-black/60 backdrop-blur-md px-3.5 py-1 text-xs font-medium text-white border border-white/20 shadow-sm">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+              <a
+                href={`/blog/${post.slug}`}
+                class="blog-card group flex flex-col overflow-hidden rounded-[26px] border border-zinc-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl dark:border-zinc-800/90 dark:bg-[#121215] dark:hover:border-[#7C3AED]/60"
+              >
+                <!-- Blank Image Placeholder Container -->
+                <div class="relative aspect-[16/10] w-full bg-zinc-100 dark:bg-zinc-900/60 border-b border-zinc-200 dark:border-zinc-800/80 transition-colors"></div>
 
                 <!-- Card Body -->
                 <div class="p-6 flex flex-col flex-1 justify-between">
                   <div>
-                    <!-- Title (Non-clickable) -->
-                    <h2 class="text-xl font-bold tracking-tight text-zinc-900 dark:text-white leading-snug">
+                    <!-- Title -->
+                    <h2 class="text-xl font-bold tracking-tight text-zinc-900 dark:text-white leading-snug group-hover:text-[#7C3AED] dark:group-hover:text-[#A78BFA] transition-colors">
                       {post.title}
                     </h2>
 
@@ -145,8 +139,7 @@ import "../styles/global.css";
                   </div>
 
                 </div>
-
-              </article>
+              </a>
             ))
           }
         </div>
