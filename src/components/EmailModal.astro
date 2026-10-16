@@ -1,0 +1,262 @@
+---
+// src/components/EmailModal.astro
+---
+
+<!-- Email Selector Modal -->
+<div
+  id="email-modal"
+  class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 opacity-0 pointer-events-none transition-opacity duration-200 ease-out"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="email-modal-title"
+>
+  <!-- Backdrop -->
+  <div
+    id="email-modal-backdrop"
+    class="absolute inset-0 bg-black/60 dark:bg-black/80 backdrop-blur-sm transition-opacity"
+  ></div>
+
+  <!-- Modal Content Card -->
+  <div
+    id="email-modal-card"
+    class="relative w-full max-w-md transform rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-[#121215] p-5 sm:p-6 shadow-2xl transition-all duration-200 scale-95 translate-y-2"
+  >
+    <!-- Header -->
+    <div class="flex items-start justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent border border-accent/20">
+          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+        </div>
+        <div>
+          <h3 id="email-modal-title" class="text-base sm:text-lg font-bold text-zinc-900 dark:text-white">
+            Send an Email
+          </h3>
+          <p class="text-xs text-zinc-500 dark:text-zinc-400">
+            Choose how you'd like to get in touch
+          </p>
+        </div>
+      </div>
+
+      <!-- Close Button -->
+      <button
+        id="email-modal-close"
+        type="button"
+        class="rounded-lg p-1.5 text-zinc-400 hover:bg-zinc-100 hover:text-zinc-700 dark:hover:bg-zinc-800 dark:hover:text-zinc-200 transition-colors cursor-pointer"
+        aria-label="Close dialog"
+      >
+        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Quick Copy Email Box -->
+    <div class="mt-4 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/60 p-3 flex items-center justify-between gap-2.5">
+      <div class="min-w-0 flex-1">
+        <span class="block text-[10px] font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">Direct Address</span>
+        <span class="block font-mono text-xs sm:text-[13px] font-medium text-zinc-900 dark:text-zinc-100 truncate mt-0.5">
+          gauravdoliya.fxwork@gmail.com
+        </span>
+      </div>
+
+      <button
+        id="copy-email-btn"
+        type="button"
+        class="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 hover:opacity-90 active:scale-95 transition-all shadow-sm cursor-pointer"
+      >
+        <svg id="copy-icon" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+        </svg>
+        <svg id="check-icon" class="hidden h-3.5 w-3.5 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+        </svg>
+        <span id="copy-text">Copy</span>
+      </button>
+    </div>
+
+    <!-- Divider -->
+    <div class="my-4 flex items-center gap-3">
+      <div class="h-px flex-1 bg-zinc-200 dark:border-zinc-800"></div>
+      <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">Or Open In</span>
+      <div class="h-px flex-1 bg-zinc-200 dark:border-zinc-800"></div>
+    </div>
+
+    <!-- Email Provider Options -->
+    <div class="space-y-2">
+      <!-- Gmail (Web) -->
+      <a
+        href="https://mail.google.com/mail/?view=cm&fs=1&to=gauravdoliya.fxwork@gmail.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group flex items-center justify-between gap-3 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-[#151518] p-3 text-zinc-800 dark:text-zinc-200 hover:border-accent hover:bg-zinc-50 dark:hover:border-accent/80 dark:hover:bg-zinc-900/60 transition-all"
+      >
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-red-500/10 text-red-500 border border-red-500/20">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+            </svg>
+          </div>
+          <div class="min-w-0 text-left">
+            <div class="flex items-center gap-2">
+              <span class="text-sm font-semibold text-zinc-900 dark:text-white group-hover:text-accent transition-colors">Gmail</span>
+              <span class="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 text-[10px] font-medium text-zinc-500 dark:text-zinc-400">Web</span>
+            </div>
+            <p class="text-[11px] text-zinc-500 truncate">Opens compose in new browser tab</p>
+          </div>
+        </div>
+        <svg class="h-4 w-4 shrink-0 text-zinc-400 group-hover:text-accent group-hover:translate-x-0.5 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+        </svg>
+      </a>
+
+      <!-- Outlook (Web) -->
+      <a
+        href="https://outlook.live.com/mail/0/deeplink/compose?to=gauravdoliya.fxwork@gmail.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group flex items-center justify-between gap-3 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-[#151518] p-3 text-zinc-800 dark:text-zinc-200 hover:border-blue-500 hover:bg-zinc-50 dark:hover:border-blue-500/80 dark:hover:bg-zinc-900/60 transition-all"
+      >
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-500/10 text-blue-500 border border-blue-500/20">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M1 18.5V5.5L12 2l11 3.5v13L12 22 1 18.5zm11-8.5l9-3.2-9-2.8-9 2.8 9 3.2zm-9 1.4v5.3l8 2.6v-5.3l-8-2.6zm10 2.6l8-2.6v-5.3l-8 2.6v5.3z"/>
+            </svg>
+          </div>
+          <div class="min-w-0 text-left">
+            <div class="flex items-center gap-2">
+              <span class="text-sm font-semibold text-zinc-900 dark:text-white group-hover:text-blue-500 transition-colors">Outlook Web</span>
+              <span class="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 text-[10px] font-medium text-zinc-500 dark:text-zinc-400">Web</span>
+            </div>
+            <p class="text-[11px] text-zinc-500 truncate">Hotmail, Live & Office 365</p>
+          </div>
+        </div>
+        <svg class="h-4 w-4 shrink-0 text-zinc-400 group-hover:text-blue-500 group-hover:translate-x-0.5 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+        </svg>
+      </a>
+
+      <!-- Default Mail Client (mailto:) -->
+      <a
+        href="mailto:gauravdoliya.fxwork@gmail.com"
+        class="group flex items-center justify-between gap-3 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-[#151518] p-3 text-zinc-800 dark:text-zinc-200 hover:border-zinc-400 hover:bg-zinc-50 dark:hover:border-zinc-600 dark:hover:bg-zinc-900/60 transition-all"
+      >
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-zinc-500/10 text-zinc-600 dark:text-zinc-300 border border-zinc-500/20">
+            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+          </div>
+          <div class="min-w-0 text-left">
+            <div class="flex items-center gap-2">
+              <span class="text-sm font-semibold text-zinc-900 dark:text-white group-hover:text-zinc-900 dark:group-hover:text-white transition-colors">Default Mail Client</span>
+              <span class="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 text-[10px] font-medium text-zinc-500 dark:text-zinc-400">Desktop</span>
+            </div>
+            <p class="text-[11px] text-zinc-500 truncate">Apple Mail, Outlook Desktop, etc.</p>
+          </div>
+        </div>
+        <svg class="h-4 w-4 shrink-0 text-zinc-400 group-hover:text-zinc-600 dark:group-hover:text-zinc-200 group-hover:translate-x-0.5 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  (() => {
+    function initEmailModal() {
+      const modal = document.getElementById('email-modal');
+      const card = document.getElementById('email-modal-card');
+      const backdrop = document.getElementById('email-modal-backdrop');
+      const closeBtn = document.getElementById('email-modal-close');
+      const copyBtn = document.getElementById('copy-email-btn');
+      const copyIcon = document.getElementById('copy-icon');
+      const checkIcon = document.getElementById('check-icon');
+      const copyText = document.getElementById('copy-text');
+
+      if (!modal) return;
+
+      function openModal() {
+        modal.classList.remove('opacity-0', 'pointer-events-none');
+        modal.classList.add('opacity-100', 'pointer-events-auto');
+        if (card) {
+          card.classList.remove('scale-95', 'translate-y-2');
+          card.classList.add('scale-100', 'translate-y-0');
+        }
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        modal.classList.remove('opacity-100', 'pointer-events-auto');
+        modal.classList.add('opacity-0', 'pointer-events-none');
+        if (card) {
+          card.classList.remove('scale-100', 'translate-y-0');
+          card.classList.add('scale-95', 'translate-y-2');
+        }
+        document.body.style.overflow = '';
+      }
+
+      document.querySelectorAll('[data-open-email-modal]').forEach((elem) => {
+        if (!elem.dataset.emailModalBound) {
+          elem.dataset.emailModalBound = 'true';
+          elem.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal();
+          });
+        }
+      });
+
+      backdrop?.addEventListener('click', closeModal);
+      closeBtn?.addEventListener('click', closeModal);
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.classList.contains('pointer-events-none')) {
+          closeModal();
+        }
+      });
+
+      copyBtn?.addEventListener('click', async () => {
+        const email = 'gauravdoliya.fxwork@gmail.com';
+        try {
+          if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(email);
+          } else {
+            const textArea = document.createElement('textarea');
+            textArea.value = email;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            document.execCommand('copy');
+            textArea.remove();
+          }
+
+          copyIcon?.classList.add('hidden');
+          checkIcon?.classList.remove('hidden');
+          if (copyText) copyText.textContent = 'Copied!';
+          copyBtn.classList.add('bg-emerald-600', 'text-white');
+
+          setTimeout(() => {
+            copyIcon?.classList.remove('hidden');
+            checkIcon?.classList.add('hidden');
+            if (copyText) copyText.textContent = 'Copy';
+            copyBtn.classList.remove('bg-emerald-600', 'text-white');
+          }, 2000);
+        } catch (err) {
+          console.error('Failed to copy email:', err);
+        }
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initEmailModal);
+    } else {
+      initEmailModal();
+    }
+
+    document.addEventListener('astro:page-load', initEmailModal);
+  })();
+</script>

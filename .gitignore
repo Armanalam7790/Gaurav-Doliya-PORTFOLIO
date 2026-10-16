@@ -14,8 +14,6 @@ pnpm-debug.log*
 
 
 # environment variables
-.env
-.env.production
 
 # macOS-specific files
 .DS_Store
@@ -23,7 +21,7 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 .agents
-.vscode
 branch_structure.json
 temp_auto_push.bat
 temp_interactive_push.bat
+config.bat
