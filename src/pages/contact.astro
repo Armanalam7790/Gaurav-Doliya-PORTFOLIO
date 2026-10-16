@@ -2,6 +2,7 @@
 // src/pages/contact.astro
 import Navbar from "../components/Navbar.astro";
 import Contact from "../components/Contact.astro";
+import EmailModal from "../components/EmailModal.astro";
 import "../styles/global.css";
 ---
 
@@ -29,15 +30,21 @@ import "../styles/global.css";
     <script is:inline>
       (() => {
         const isDark = (() => {
-          if (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('theme')) {
-            return sessionStorage.getItem('theme') === 'dark';
+          if (
+            typeof sessionStorage !== "undefined" &&
+            sessionStorage.getItem("theme")
+          ) {
+            return sessionStorage.getItem("theme") === "dark";
           }
-          if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-            return localStorage.getItem('theme') === 'dark';
+          if (
+            typeof localStorage !== "undefined" &&
+            localStorage.getItem("theme")
+          ) {
+            return localStorage.getItem("theme") === "dark";
           }
           return true;
         })();
-        document.documentElement.classList.toggle('dark', isDark);
+        document.documentElement.classList.toggle("dark", isDark);
       })();
     </script>
   </head>
@@ -50,5 +57,6 @@ import "../styles/global.css";
     <main>
       <Contact />
     </main>
+    <EmailModal />
   </body>
 </html>
