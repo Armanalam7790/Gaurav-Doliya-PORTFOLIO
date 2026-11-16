@@ -7,8 +7,8 @@
      GLOBAL ACCENT COLOR CONFIGURATION
      Change this hex code to update the color across the entire site!
      ======================================================== */
-  --accent: #df0808;
-  --accent-hover: #b90606;
+  --accent: #7C3AED;
+  --accent-hover: #7C3AED;
 
   /* Neutral clean scrollbar */
   --scrollbar-thumb: #d4d4d8;
@@ -24,7 +24,7 @@ html.dark,
 @theme {
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
-}
+} 
 
 @layer base {
   :root {
