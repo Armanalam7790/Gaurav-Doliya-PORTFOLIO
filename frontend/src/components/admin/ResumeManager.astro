@@ -1,0 +1,245 @@
+
+---
+const currentResume = "/CV_Gaurav_Doliya.pdf";
+---
+
+<section class="resume-manager">
+  <div class="heading">
+    <div>
+      <h2>Resume Management</h2>
+      <p>Manage the resume displayed on your portfolio.</p>
+    </div>
+    <span class="status">Current Resume</span>
+  </div>
+
+  <div class="resume-card">
+    <div class="file-icon">PDF</div>
+
+    <div class="file-info">
+      <h3>Gaurav Doliya Resume</h3>
+      <p>Current file: CV_Gaurav_Doliya.pdf</p>
+      <a href={currentResume} target="_blank">View Resume ↗</a>
+    </div>
+  </div>
+
+  <form id="resumeForm">
+    <label for="resumeFile">Upload New Resume</label>
+
+    <div class="upload-box">
+      <input
+        type="file"
+        id="resumeFile"
+        name="resume"
+        accept=".pdf"
+        required
+      />
+      <p>Choose a PDF file to replace your current resume.</p>
+    </div>
+
+    <button type="submit">Update Resume</button>
+
+    <p id="message" aria-live="polite"></p>
+  </form>
+</section>
+
+<script>
+  const resumeForm = document.querySelector("#resumeForm");
+  const resumeFile = document.querySelector("#resumeFile") as HTMLInputElement | null;
+  const message = document.querySelector("#message") as HTMLElement | null;
+  const submitButton = resumeForm?.querySelector("button[type='submit']") as HTMLButtonElement | null;
+  const currentResumeLink = document.querySelector(".file-info a") as HTMLAnchorElement | null;
+  const currentResumeName = document.querySelector(".file-info p") as HTMLElement | null;
+
+  resumeForm?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    if (!resumeFile || !message) return;
+
+    const file = resumeFile.files?.[0];
+
+    if (!file) {
+      message.textContent = "Please select a PDF file.";
+      message.style.color = "#f87171";
+      return;
+    }
+
+    const isPdf = file.type === "application/pdf" || file.name.toLowerCase().endsWith(".pdf");
+    if (!isPdf) {
+      message.textContent = "Only PDF files are allowed.";
+      message.style.color = "#f87171";
+      return;
+    }
+
+    const originalText = submitButton?.textContent || "Update Resume";
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = "Uploading...";
+      submitButton.style.opacity = "0.7";
+      submitButton.style.cursor = "not-allowed";
+    }
+
+    message.textContent = "Uploading resume, please wait...";
+    message.style.color = "#c4b5fd";
+
+    try {
+      const apiUrl = import.meta.env.PUBLIC_API_URL || "http://localhost:3000";
+
+      const formData = new FormData();
+      formData.append("resume", file);
+
+      const response = await fetch(`${apiUrl}/api/resume/upload`, {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await response.json().catch(() => null);
+
+      if (response.ok && data?.success) {
+        message.textContent = data.message || "Resume updated successfully!";
+        message.style.color = "#4ade80";
+
+        if (currentResumeLink) {
+          currentResumeLink.setAttribute("href", "/CV_Gaurav_Doliya.pdf?v=" + Date.now());
+          currentResumeLink.textContent = "View Resume ↗";
+        }
+        if (currentResumeName) {
+          currentResumeName.textContent = "Current file: " + file.name;
+        }
+
+        resumeFile.value = "";
+      } else {
+        message.textContent = data?.message || "Failed to upload resume. Please try again.";
+        message.style.color = "#f87171";
+      }
+    } catch (error) {
+      console.error("Resume upload error:", error);
+      message.textContent = "Network error: Unable to connect to backend server (http://localhost:3000).";
+      message.style.color = "#f87171";
+    } finally {
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = originalText;
+        submitButton.style.opacity = "1";
+        submitButton.style.cursor = "pointer";
+      }
+    }
+  });
+</script>
+
+<style>
+  .resume-manager {
+    max-width: 750px;
+    padding: 28px;
+    border: 1px solid #302d36;
+    border-radius: 12px;
+    background: #19181d;
+    color: white;
+    font-family: Arial, sans-serif;
+  }
+
+  .heading {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    align-items: flex-start;
+    margin-bottom: 28px;
+  }
+
+  h2 {
+    margin: 0 0 8px;
+    font-size: 21px;
+  }
+
+  .heading p, .file-info p {
+    color: #999;
+    font-size: 13px;
+  }
+
+  .status {
+    color: #c4b5fd;
+    background: #302541;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    white-space: nowrap;
+  }
+
+  .resume-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px;
+    background: #111014;
+    border: 1px solid #302d36;
+    border-radius: 9px;
+    margin-bottom: 28px;
+  }
+
+  .file-icon {
+    padding: 15px 12px;
+    background: #3c2026;
+    color: #ff9ba5;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 12px;
+  }
+
+  .file-info h3 {
+    font-size: 14px;
+    margin: 0 0 7px;
+  }
+
+  .file-info p {
+    margin: 0 0 9px;
+  }
+
+  .file-info a {
+    color: #c4b5fd;
+    font-size: 12px;
+    text-decoration: none;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 12px;
+    font-size: 13px;
+    font-weight: bold;
+  }
+
+  .upload-box {
+    padding: 20px;
+    border: 1px dashed #51485f;
+    border-radius: 9px;
+  }
+
+  input {
+    max-width: 100%;
+    color: #ccc;
+  }
+
+  .upload-box p {
+    color: #888;
+    font-size: 12px;
+  }
+
+  button {
+    margin-top: 20px;
+    padding: 12px 20px;
+    border: 0;
+    border-radius: 7px;
+    background: #a78bfa;
+    color: #17121f;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background: #b9a4ff;
+  }
+
+  #message {
+    color: #c4b5fd;
+    font-size: 12px;
+    margin-top: 15px;
+  }
+</style>

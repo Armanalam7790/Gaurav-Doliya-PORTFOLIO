@@ -1,0 +1,241 @@
+---
+const pageTitle = "Admin Login | Gaurav Doliya";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>{pageTitle}</title>
+  </head>
+
+  <body>
+    <main class="login-page">
+      <div class="login-container">
+        <div class="login-card">
+          <div class="card-header">
+            <span class="eyebrow">ADMINISTRATION</span>
+            <h1>Welcome back</h1>
+            <p>Sign in to manage your portfolio.</p>
+          </div>
+
+          <form id="loginForm">
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                placeholder="Enter your username"
+                autocomplete="username"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter your password"
+                autocomplete="current-password"
+                required
+              />
+            </div>
+
+            <button type="submit" class="login-button">
+              Sign In <span>→</span>
+            </button>
+
+            <p id="message" class="message" aria-live="polite"></p>
+          </form>
+
+          <div class="security-note">
+            
+            Secure administrator access
+          </div>
+        </div>
+
+        <p class="footer-text">
+          © {new Date().getFullYear()} Gaurav Doliya. All rights reserved.
+        </p>
+      </div>
+    </main>
+
+    <script>
+      const loginForm = document.querySelector("#loginForm");
+      const message = document.querySelector("#message");
+
+      loginForm?.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        if (message) {
+          message.textContent =
+            "Login authentication will be connected with the backend.";
+          message.className = "message";
+        }
+      });
+    </script>
+  </body>
+</html>
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: Inter, Arial, sans-serif;
+    background: #0c0c0e;
+    color: #fff;
+  }
+
+  .login-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 20px;
+    background:
+      radial-gradient(ellipse at 50% 20%, #292033 0%, transparent 45%),
+      #0c0c0e;
+  }
+
+  .login-container {
+    width: 100%;
+    max-width: 420px;
+  }
+
+  .login-card {
+    padding: 38px;
+    border: 1px solid #29272e;
+    border-radius: 18px;
+    background: rgba(24, 23, 27, 0.95);
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
+  }
+
+  .eyebrow {
+    color: #a78bfa;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+  }
+
+  .card-header h1 {
+    margin: 12px 0 8px;
+    font-size: 30px;
+    letter-spacing: -1px;
+  }
+
+  .card-header p {
+    margin: 0 0 30px;
+    color: #99959f;
+    font-size: 14px;
+  }
+
+  .form-group {
+    margin-bottom: 22px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 9px;
+    color: #e5e2e9;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  input {
+    width: 100%;
+    height: 48px;
+    padding: 0 14px;
+    border: 1px solid #37343e;
+    border-radius: 8px;
+    outline: none;
+    background: #111014;
+    color: #fff;
+    font-size: 13px;
+    transition: border 0.2s;
+  }
+
+  input:focus {
+    border-color: #a78bfa;
+  }
+
+  input::placeholder {
+    color: #716d78;
+  }
+
+  .login-button {
+    width: 100%;
+    height: 49px;
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: 0;
+    border-radius: 8px;
+    background: #a78bfa;
+    color: #17121f;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .login-button:hover {
+    background: #b9a4ff;
+    transform: translateY(-2px);
+  }
+
+  .login-button span {
+    font-size: 18px;
+  }
+
+  .message {
+    min-height: 18px;
+    margin: 14px 0 0;
+    color: #c4b5fd;
+    font-size: 12px;
+    text-align: center;
+  }
+
+  .security-note {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 23px;
+    color: #85818b;
+    font-size: 11px;
+  }
+
+  .security-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #4ade80;
+  }
+
+  .footer-text {
+    margin-top: 28px;
+    color: #77727e;
+    font-size: 11px;
+    text-align: center;
+  }
+
+  @media (max-width: 480px) {
+    .login-card {
+      padding: 27px 22px;
+    }
+
+    .card-header h1 {
+      font-size: 26px;
+    }
+  }
+</style>

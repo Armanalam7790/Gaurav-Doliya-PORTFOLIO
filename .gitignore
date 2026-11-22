@@ -2,6 +2,7 @@
 dist/
 # generated types
 .astro/
+.tmp/
 
 # dependencies
 node_modules/
@@ -14,6 +15,9 @@ pnpm-debug.log*
 
 
 # environment variables
+.env
+.env.*
+!.env.example
 
 # macOS-specific files
 .DS_Store
@@ -21,7 +25,3 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 .agents
-branch_structure.json
-temp_auto_push.bat
-temp_interactive_push.bat
-config.bat

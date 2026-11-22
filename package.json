@@ -1,19 +1,10 @@
 {
-  "name": "npm-create-astro-latest",
-  "type": "module",
-  "version": "0.0.1",
-  "engines": {
-    "node": ">=22.12.0"
-  },
+  "name": "gaurav-doliya-portfolio",
+  "version": "1.0.0",
+  "private": true,
   "scripts": {
-    "dev": "node init && astro dev",
-    "build": "node init && astro build",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
-  "dependencies": {
-    "@tailwindcss/vite": "^4.3.3",
-    "astro": "^7.3.8",
-    "tailwindcss": "^4.3.3"
+    "dev:frontend": "npm --prefix frontend run dev",
+    "dev:backend": "npm --prefix backend run dev",
+    "build:frontend": "npm --prefix frontend run build"
   }
 }

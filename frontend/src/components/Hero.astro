@@ -61,7 +61,7 @@
         <div class="mt-8 flex flex-wrap items-center gap-3.5 sm:gap-4">
           <!-- View Resume (Solid coral button like reference) -->
           <a
-            href="/Gaurav_Doliya_CV_OCT_2026.pdf"
+            href="/CV_Gaurav_Doliya.pdf"
             target="_blank"
             rel="noopener noreferrer"
             class="group inline-flex items-center gap-2 rounded-lg bg-[#de4528] px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white shadow-md shadow-[#de4528]/25 transition-all hover:bg-[#c6391e] active:scale-95"
@@ -160,9 +160,14 @@
 </section>
 
 <style>
+  #hero-canvas {
+    filter: blur(8px);
+    transform: scale(1.03);
+  }
+
   .hero-scrim {
-    backdrop-filter: blur(26px);
-    -webkit-backdrop-filter: blur(26px);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
   }
 </style>
 
@@ -193,14 +198,14 @@
       const elapsed = now - startTime;
       const isDark = document.documentElement.classList.contains('dark');
 
-      // Base canvas color (Creamy white in light mode, deep dark in dark mode)
-      ctx.fillStyle = isDark ? '#0c0706' : '#FFF9F6';
+      // Base canvas color
+      ctx.fillStyle = isDark ? '#0c0706' : '#F6F3EF';
       ctx.fillRect(0, 0, width, height);
 
       // Alternating '<' curved chevron bands
       const bend = width * 0.32;      // Crisp, pronounced '<' bend to the left
       const spacing = width * 0.24;   // Distance between bands
-      const lineWidth = width * 0.125; // Width of red bands
+      const lineWidth = width * 0.13; // Width of white bands
       const drift = (elapsed * 0.012) % spacing;
 
       ctx.lineWidth = lineWidth;
@@ -212,11 +217,19 @@
         const wobble = Math.sin(elapsed * 0.0005 + i * 1.1) * (width * 0.012);
         const apexY = height * 0.48 + Math.cos(elapsed * 0.0004 + i) * (height * 0.015);
 
-        // Vibrant coral-red matching reference screenshot
-        const alpha = isDark ? 0.70 : 0.90;
-        const color = isDark
-          ? `rgba(${226 + (i % 2) * 15}, ${70 + (i % 2) * 15}, 38, ${alpha})`
-          : `rgba(${240 + (i % 2) * 10}, ${78 + (i % 2) * 18}, 48, ${alpha})`;
+        // Contrast & color palette
+        let color;
+        if (isDark) {
+          // Luminous crisp white with subtle silver accent (kept exactly as in black theme)
+          color = (i % 2 === 0)
+            ? 'rgba(255, 255, 255, 0.26)'
+            : 'rgba(235, 240, 248, 0.12)';
+        } else {
+          // Visible studio slate-gray ribbons with elegant depth for light theme
+          color = (i % 2 === 0)
+            ? 'rgba(88, 104, 126, 0.32)'
+            : 'rgba(140, 155, 175, 0.25)';
+        }
 
         ctx.strokeStyle = color;
         ctx.beginPath();
