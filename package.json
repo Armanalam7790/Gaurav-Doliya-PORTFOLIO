@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev:frontend": "npm --prefix frontend run dev",
-    "dev:backend": "npm --prefix backend run dev",
-    "build:frontend": "npm --prefix frontend run build"
+    "build": "node init && npm --prefix frontend install && npm --prefix frontend run build && node -e \"const fs=require('fs'); fs.cpSync('frontend/dist', 'dist', {recursive: true});\"",
+    "dev:frontend": "node init && npm --prefix frontend run dev",
+    "dev:backend": "node init && npm --prefix backend run dev",
+    "build:frontend": "node init && npm --prefix frontend run build"
   }
 }
